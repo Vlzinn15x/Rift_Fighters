@@ -1,4 +1,4 @@
-name: Publicar Rift Fighters no GitHub Pages
+name: Publicar jogo no GitHub Pages
 on:
   push:
     branches: [main]
@@ -12,13 +12,17 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
-    if: hashFiles('public/index.html') != ''
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Testar combate
+        run: node tests/guest-combat.cjs
       - name: Preparar modo estatico
         run: echo "window.RIFT_HOSTING_MODE='static';" > public/hosting-config.js
       - uses: actions/configure-pages@v5

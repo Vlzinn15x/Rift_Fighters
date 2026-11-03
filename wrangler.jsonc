@@ -1,0 +1,21 @@
+// Troque database_id pelo ID retornado por npm run db:create.
+{
+  "name": "rift-fighters",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-30",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rift-fighters-rooms",
+      "database_id": "00000000-0000-4000-8000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
