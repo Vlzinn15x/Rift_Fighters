@@ -1,6 +1,6 @@
 {
   "name": "rift-fighters",
-  "version": "33.0.0",
+  "version": "35.0.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "wrangler dev",
-    "test": "node tests/guest-combat.cjs && node --experimental-strip-types tests/worker.mjs",
+    "test": "node tests/guest-combat.cjs && node --experimental-strip-types tests/worker.mjs && node tests/v35.cjs",
     "deploy": "wrangler deploy",
     "db:create": "wrangler d1 create rift-fighters-rooms",
     "db:local": "wrangler d1 migrations apply rift-fighters-rooms --local",

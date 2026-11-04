@@ -1,0 +1,51 @@
+/* V35 enhancement layer: no replacements to the V34 game art */
+.v35-page{max-width:1260px;margin:0 auto;padding:30px clamp(16px,4vw,48px) 75px;color:#eef7ff;min-height:65vh}
+.v35-heading label,.v35-boss-card label,.v35-shop-card label{font-size:11px;color:#76ddf1;font-weight:900;letter-spacing:2px}
+.v35-heading h1{font-size:clamp(28px,4vw,57px);letter-spacing:-.03em;margin:9px 0}
+.v35-heading p{color:#b7c6da;line-height:1.6;max-width:700px}
+.v35-boss-grid,.v35-shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:16px;margin:25px 0}
+.v35-boss-card,.v35-shop-card{display:flex;flex-direction:column;gap:10px;min-width:0;background:linear-gradient(158deg,color-mix(in srgb,var(--boss,#85a0c1) 9%,#101a2d),#0b101e 76%);border:1px solid color-mix(in srgb,var(--boss,#85a0c1) 38%,#25354f);border-radius:13px;padding:20px;box-shadow:0 14px 32px #0005}
+.v35-boss-card h2,.v35-shop-card h2{font-size:clamp(19px,2vw,25px);line-height:1.13;letter-spacing:-.03em;margin:2px 0;color:#f5fcff}
+.v35-boss-card p,.v35-shop-card p{font-size:13px;line-height:1.5;color:#afc3d6;margin:0 0 9px;flex:1}
+.v35-boss-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;font-size:10px;letter-spacing:1px;color:#b9cfe5}
+.v35-boss-top b{color:var(--boss)}
+.v35-boss-icon{font-size:60px;line-height:1.4;color:var(--boss);text-shadow:0 0 18px var(--boss);font-family:monospace}
+.v35-boss-end{display:grid;gap:12px}.v35-boss-end span{font-size:10px;letter-spacing:.6px;color:#d6e3f5}
+.v35-boss-card button,.v35-shop-card button,.v35-backup button,.v35-backup-actions label{background:var(--boss,var(--aura,#6feeff));color:#09101b;border:0;border-radius:6px;min-height:44px;padding:12px 13px;font-size:12px;line-height:1.25;font-weight:900;letter-spacing:.06em;cursor:pointer;text-align:center}
+.v35-boss-card button:disabled,.v35-shop-card button:disabled{cursor:default;background:#35435a;color:#90a0b8}
+.v35-boss-card.v35-locked{filter:saturate(.52);opacity:.79}
+.v35-notice{min-height:24px;color:#a9f3df;font-size:13px;margin-top:18px}
+.v35-wallet{display:inline-flex;align-items:baseline;gap:7px;background:#152238;padding:12px 18px;border-radius:8px;color:#ffdf88}
+.v35-wallet b{font-size:24px}.v35-wallet small{font-size:10px;color:#adc1d9}
+.v35-shop-card{--boss:var(--aura);position:relative}.v35-shop-card button{background:var(--aura)}
+.v35-aura-preview{height:145px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse,#ffffff10,transparent 66%)}
+.v35-aura-preview span{font-size:69px;color:var(--aura);filter:drop-shadow(0 0 20px var(--aura));animation:v35pulse 3s ease-in-out infinite}
+.v35-aura-preview i{border:3px solid var(--aura);border-radius:50%;position:absolute;width:105px;height:22px;top:76%;box-shadow:0 0 25px var(--aura)}
+@keyframes v35pulse{50%{transform:translateY(-6px) scale(1.05)}}
+.v35-home-link{margin-top:5px}
+#v35BossHud[hidden],.v35-boss-cast[hidden]{display:none!important}
+#v35BossHud{position:absolute;z-index:3;top:21%;right:12px;display:flex;flex-direction:column;align-items:end;gap:4px;pointer-events:none;color:#dfe9ff;max-width:35%;filter:drop-shadow(0 2px 5px #000)}
+#v35BossHud>span{font-size:9px;font-weight:900;letter-spacing:1.5px;color:var(--bossColor,#ffbe7a)}
+#v35BossHud>strong{font-size:clamp(11px,1.45vw,20px);text-align:right;line-height:1.2}
+#v35BossHud>small{font-size:11px;font-weight:700}
+.v35-boss-cast{display:flex;flex-direction:column;align-items:end;gap:3px;width:min(180px,90%);margin-top:5px;color:#ffe5a1}
+.v35-boss-cast b{font-size:10px;text-align:right}.v35-boss-cast i{height:4px;background:#ff8a69;box-shadow:0 0 9px #ff886d;display:block;transition:width .05s linear}
+.v35-backup{margin:24px 0;padding:20px;border:1px solid #344258;background:#101a29;border-radius:12px}
+.v35-backup h3{font-size:17px;margin:0 0 7px}.v35-backup p{font-size:13px;color:#b8cee1}.v35-backup-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}.v35-backup-actions button,.v35-backup-actions label{background:#83e3f7;font-size:12px;display:flex;align-items:center;justify-content:center}
+.v35-backup small{color:#bbf1d8}.v35-backup #v35Records{color:#e6d49b}
+.touch .v35-heavy{touch-action:none;user-select:none;background:#26172e;border:2px solid #ffa779;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;min-width:58px;min-height:52px}
+.touch .v35-heavy b{font-size:21px;color:#ffdc9b}.touch .v35-heavy small{font-size:9px;font-weight:900}.touch .v35-heavy.holding{transform:scale(.93);background:#663240}
+button:focus-visible,.v35-backup-actions label:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:700px){.v35-page{padding:18px 13px 45px}.v35-boss-grid,.v35-shop-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}.v35-boss-card,.v35-shop-card{padding:15px}#v35BossHud{right:8px;top:21%;max-width:45%}}
+@media(max-height:540px) and (orientation:landscape){#v35BossHud{top:19%;right:6px}#v35BossHud>span{font-size:8px}.v35-boss-cast b{font-size:8px}.touch .v35-heavy{min-height:36px;min-width:42px}}
+@media(prefers-reduced-motion:reduce){.v35-aura-preview span{animation:none}.v35-boss-cast i{transition:none}}
+
+/* The V34 menu intentionally disables page scrolling: re-enable it for content-rich V35 pages. */
+body.ui30:not(.playing) main>.v35-page:not(.hidden),
+body.ui30:not(.playing) main>#profilePage:not(.hidden){overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;}
+body.ui30:not(.playing) main>.v35-page:not(.hidden){height:100%!important;min-height:0!important;max-width:100%!important;padding-top:clamp(18px,3vh,40px)!important}
+.v35-quickbar{position:absolute;z-index:8;left:4%;bottom:12px;display:flex;gap:8px;width:clamp(250px,25vw,390px);max-width:calc(100% - 28px)}
+.v35-quick-link{background:#061328e9;color:#cdeeff;border:1px solid #498baa;border-radius:5px;min-height:30px;padding:4px 8px;flex:1;min-width:0;font-size:11px;letter-spacing:.6px;font-weight:900;text-align:center}
+.v35-quick-link span{color:#fbc47b}
+.v35-quick-link:hover,.v35-quick-link:focus-visible{background:#143758;border-color:#8df0ff}
+@media (max-height:600px),(max-width:1000px){.v35-quickbar{left:14px;bottom:6px;width:230px}.v35-quick-link{min-height:25px;padding:3px 6px;font-size:10px}}
