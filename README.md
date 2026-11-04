@@ -1,77 +1,101 @@
-# RIFT FIGHTERS V35 — GitHub Pages
+# Rift Fighters — projeto para GitHub
 
-Jogo de luta 2D baseado integralmente no projeto **Rift Fighters V34** fornecido pelo usuário. Mantém os 11 lutadores, sprites, movimentos, ataques, especiais, arenas, treinamento, perfil e opções da V34. Esta é uma atualização incremental funcional, não uma recriação do zero.
+Versão 34: 11 lutadores, 33 habilidades, especiais, treino, upgrades e salas PC/celular.
 
-## Novidades implementadas na V35
+V34 adiciona painel de configurações com áudio, intensidade dos efeitos, animações reduzidas, tela cheia, restauração dos padrões e atalhos de combate. As preferências ficam salvas localmente no aparelho.
+Este pacote contém o jogo e os recursos, com um servidor de salas independente da hospedagem anterior.
 
-| Área | Implementação | Limitação |
-| --- | --- | --- |
-| Movimentação | Transição de velocidade suavizada, controles preservados | Mesmas regras de física da V34 |
-| Combate | Combos, especiais, dano, hitboxes e defesas da V34 preservados; registro de dano e combo | Sem alterações de arte aos golpes existentes |
-| Animações | Sprites existentes preservados; telegráficos e efeitos nos bosses; aura cosmética equipada | Sem sprites novos para os cinco bosses |
-| IA | CPU leva em conta alcance, cooldown, energia, ameaça e dificuldade; ataques anunciados nos bosses | Ainda não equivale a uma IA competitiva online |
-| Campanha | 5 chefões sequenciais, 3 fases de agressividade por chefe, desbloqueio e recompensa da primeira vitória | Chefões usam lutadores e sprites já existentes |
-| Progressão | Moedas por duelo, recompensas de campanha, compra/equipamento de 5 auras, histórico de bosses | Perfil é local ao navegador por padrão |
-| Backup | Exportar/importar progresso V35 em arquivo `.json` pela aba PERFIL | Importação somente do formato V35 |
-| Celular | Canvas 1× em tela de toque, controle PESADO adicionado, páginas com rolagem e melhorias de layout | É recomendável jogar em modo paisagem |
-| Publicação | GitHub Actions publica a pasta `public` via GitHub Pages; Cloudflare Worker permanece opcional | Multiplayer **não funciona somente com GitHub Pages** |
+## Comece aqui
 
-**Importante:** esta atualização contém **11 personagens jogáveis** (elenco original deste ZIP). A versão mais recente de outro chat aparentava ter 14 personagens e novos sprites que **não estavam neste ZIP**. Não foram inventadas versões gráficas desses três personagens. Os 5 chefões da campanha são variações de lutadores já existentes, com HP e IA diferenciados. Os duelos solo, treinos, chefões e loja são locais; para salas online é necessário implantar um servidor Cloudflare Worker com D1.
+1. Extraia este ZIP. Não envie o ZIP fechado como único arquivo do repositório.
+2. Crie um repositório chamado `rift-fighters` na sua conta do GitHub.
+3. Envie o **conteúdo desta pasta**, incluindo `.github`, `public`, `worker`, `migrations`, `tests`, `README.md`, `package.json` e `wrangler.jsonc`.
+4. No repositório, abra **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+5. Abra **Actions → Publicar jogo no GitHub Pages → Run workflow**. Espere terminar.
+6. O link aparece em **Settings → Pages** e no resultado da publicação. Normalmente tem o formato `https://SEU-USUARIO.github.io/rift-fighters/` — esse é um exemplo, não um endereço já criado.
 
-## Instalar e publicar no GitHub Pages
+### Envio mais fácil pelo computador
 
-1. Descompacte `RIFT_FIGHTERS_V35_GITHUB.zip` no seu computador.
-2. Crie um repositório público ou privado no GitHub (por exemplo, `rift-fighters`).
-3. Envie **os arquivos e as pastas de dentro de `rift-fighters-v35`** para a raiz do repositório, sem deixar tudo aninhado em uma pasta adicional. Inclua `.github`, `public`, `worker`, `tests`, `migrations`, `README.md`, `package.json` e `wrangler.jsonc`.
-4. Vá em **Settings → Pages → Build and deployment** e selecione **GitHub Actions** em Source.
-5. Em **Actions**, execute o workflow **Publicar jogo no GitHub Pages** se a publicação não iniciar após o primeiro push em `main`.
-6. Confira o endereço que o próprio GitHub mostrará em **Settings → Pages**. Um formato comum é `https://SEU-USUARIO.github.io/rift-fighters/`, mas esse endereço é só um exemplo.
+Use o GitHub Desktop para criar um repositório local a partir desta pasta e use **Publish repository** para enviar à sua conta. Confira que a pasta `.github` entrou no envio. Não publique `node_modules`, `.env`, `.dev.vars` ou `.wrangler`.
 
-O workflow testa o combate e a V35, configura a hospedagem como estática, e publica o **conteúdo de `public/`** na raiz do site. A pasta `public/assets` deve ser mantida junto dos scripts e do `index.html`. Não faça upload apenas de `index.html`.
+Se preferir terminal, dentro desta pasta:
 
-## Como jogar
-
-- **A / D** ou ← / →: movimentação; **W / Espaço**: pular
-- **Shift**: dash; **S**: defesa; **M1 / J**: combo; **K**: pesado
-- **Z / X / C**: habilidades; **V**: especial; **Esc / P**: pausar
-- **Celular:** botões na parte inferior da arena e botão adicional **PESADO**; vire o aparelho para paisagem
-- **BOSSES:** enfrente os chefões em ordem; a vitória 2×0 ou 2×1 libera o próximo
-- **LOJA:** gaste moedas em auras cosméticas, que **não** aumentam dano nem vida
-- **PERFIL:** baixe seu save antes de trocar de navegador ou domínio
-
-Vitória em duelo rende 180 moedas; derrota rende 60. A primeira vitória contra cada boss concede um bônus de campanha. Treinamento não concede moedas.
-
-## Testar no computador
-
-A V35 é uma aplicação estática. Inicie um servidor HTTP dentro de `public`, por exemplo:
-
-```bash
-cd public
-python -m http.server 8000
+```sh
+git init -b main
+git add .
+git commit -m "Rift Fighters v33"
+git remote add origin URL_DO_REPOSITORIO_QUE_VOCE_CRIOU
+git push -u origin main
 ```
 
-Abra `http://localhost:8000`. Evite abrir o `index.html` por duplo clique, porque alguns navegadores restringem recursos locais. Para testar a suíte Node.js use uma versão moderna do Node (>= 22.13):
+## Qual publicação escolher?
 
-```bash
+| Publicação | Solo e treino | Salas online | Atualiza após push em main |
+| --- | --- | --- | --- |
+| GitHub Pages | Sim | Não: Pages só hospeda arquivos | Sim, após ativar Pages |
+| Cloudflare Worker + D1 | Sim | Sim | Sim, após configurar abaixo |
+
+No GitHub Pages, a tela de salas avisa a limitação e os botões online ficam desativados. Os personagens, mapas, M1, poderes, especiais e upgrades locais continuam disponíveis. Não abra `index.html` por duplo clique: use o site publicado ou um servidor local.
+
+## Publicar o jogo completo, com salas online
+
+Requer uma conta Cloudflare. As credenciais são configuradas na sua conta; nenhuma foi incluída neste pacote. Verifique os limites e a cobrança da sua conta antes de publicar.
+
+1. Instale Node.js 22.13 ou superior.
+2. No terminal desta pasta:
+
+```sh
+npm install
+npx wrangler login
+npm run db:create
+```
+
+3. Copie o `database_id` retornado e substitua o ID de exemplo em `wrangler.jsonc`. Salve esse arquivo no repositório.
+4. Prepare o banco e publique:
+
+```sh
+npm run db:remote
+npm run deploy
+```
+
+O comando de publicação informa o endereço real do seu jogo completo. O banco começa vazio: salas antigas não são transferidas. Perfis e upgrades continuam locais ao navegador e ao domínio; trocar de domínio não transfere esse progresso automaticamente.
+
+### Atualização automática pelo GitHub
+
+Em **Settings → Secrets and variables → Actions**, configure:
+
+- Secret `CLOUDFLARE_API_TOKEN`: token com permissão para editar Workers e D1 na sua conta.
+- Secret `CLOUDFLARE_ACCOUNT_ID`: ID da conta Cloudflare.
+- Variable `DEPLOY_TO_CLOUDFLARE`: valor `true`.
+
+Nunca cole tokens no código ou no README. Após configurar, o workflow **Publicar jogo completo na Cloudflare** publica os próximos pushes de `main`. O workflow de Pages também pode permanecer ativo; ele publica uma cópia solo separada. Se quiser apenas Cloudflare, desative o workflow de Pages na aba Actions.
+
+## Como atualizar o jogo depois
+
+Edite os arquivos em `public/`, teste e envie um novo commit para `main`. As publicações configuradas são executadas novamente; o endereço permanece o mesmo. Você também pode enviar a pasta ou o repositório para continuar trabalhando no jogo em outra conversa.
+
+- `public/game.js`: regras, personagens e entrada.
+- `public/combat.js`: combos e especiais.
+- `public/trio.js` / `trio-animated.js`: Lula, Bolsonaro e Ichigo.
+- `public/menu-screen.css` / `menu-screen.js`: interfaces sem rolagem.
+- `public/assets/`: sprites, cenários e efeitos.
+- `worker/index.ts`: API das salas.
+- `tests/guest-combat.cjs`: testes do combate e regressões.
+
+### Testar localmente
+
+```sh
+npm install
+npm run db:local
+npm run dev
+```
+
+Abra o endereço indicado no terminal. Para testar o combate sem iniciar servidor:
+
+```sh
 npm test
 ```
 
-Os testes cobrem os sistemas originais da V34, Worker de salas e verificações estruturais da V35. Durante o desenvolvimento, uma sessão de navegador automatizada adicional confirmou inicialização sem erros, primeiro boss, vitória, desbloqueio do próximo, compra de aura, loja, perfil e comportamento responsivo de tela de toque. Isso não substitui testes manuais em celulares reais e em partidas completas.
-
-## Salas online (opcional)
-
-GitHub Pages **não executa APIs nem salas**. A parte `worker/`, `migrations/`, `wrangler.jsonc` e workflow Cloudflare foi preservada para implantação em sua própria conta Cloudflare, junto de um banco D1. Para implantar, configure credenciais na sua conta, crie o D1, configure o `database_id` real em `wrangler.jsonc`, aplique a migração e execute `npm run deploy`. **Nunca envie tokens para o repositório.**
-
-## Arquivos principais
-
-- `public/index.html`: site do jogo.
-- `public/game.js`, `combat.js`, `trio.js`, `guests.js`: sistemas originais da V34.
-- `public/v35.js`: bosses, IA, moedas, loja de auras, backup, melhorias de movimentação e toque.
-- `public/v35.css`: menus, cartas, controle pesado e rolagem responsivos.
-- `public/assets/`: imagens originais do ZIP.
-- `.github/workflows/pages.yml`: publicação automática no GitHub Pages.
-- `tests/v35.cjs`: verificações da nova versão.
-
-## Observação sobre fonte
-
-O arquivo de fonte binária do pacote original não foi redistribuído; a interface usa o fallback tipográfico monoespaçado do sistema. Todos os demais sprites, cenários e recursos relevantes foram mantidos.
+Documentação de referência:
+- https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+- https://developers.cloudflare.com/workers/static-assets/routing/worker-script/

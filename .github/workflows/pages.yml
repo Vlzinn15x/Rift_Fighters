@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 24
       - name: Testar combate
-        run: node tests/guest-combat.cjs && node tests/v35.cjs
+        run: node tests/guest-combat.cjs
       - name: Preparar modo estatico
         run: echo "window.RIFT_HOSTING_MODE='static';" > public/hosting-config.js
       - uses: actions/configure-pages@v5
